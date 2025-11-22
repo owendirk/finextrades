@@ -21,6 +21,7 @@ Data is saved as CSV files, organized by **year** and **month**, under a top-lev
   - `bitfinex_data/<YEAR>/<MONTH>/`
 - One CSV file per month:
 - File naming pattern: `SYMBOL_YYYY-MM.csv`
+- You can safely re-run the script; depending on implementation, it may skip or resume already-downloaded data (see code comments for details).
 
 ---
 
@@ -86,11 +87,7 @@ id,mts,datetime,amount,price
 ## Usage
 
 1. Make sure you have Python installed (3.8+ recommended).
-2. Install any required dependencies (for example, if the script uses `requests`):
-
-   ```bash
-   pip install requests
-   ```
+2. It utilizes default Python libraries
 
 3. Configure the script:
    - Set your desired **symbol** (e.g. `tBTCUSD`)
@@ -105,9 +102,3 @@ id,mts,datetime,amount,price
 The script will start downloading trades from the specified start date up to today and will populate the `bitfinex_data/` folder with monthly CSV files.
 
 ---
-
-## Notes
-
-- The script adheres to Bitfinex rate limits by requesting at most **10,000 trades per call**.
-- If you plan to download many years of data, the first run may take some time due to the amount of historical data.
-- You can safely re-run the script; depending on implementation, it may skip or resume already-downloaded data (see code comments for details).
